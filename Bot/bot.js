@@ -71,5 +71,15 @@ bot.on('text', async ctx => {
     await ctx.reply(`A sua mensagem, ao contrário é: ${msg}`)
     await ctx.reply('Isso é pra mostrar que eu consigo ler o que você escreve e processar sua mensagem', tecladoOpcoes)
 })
+// tratando localização
+bot.on('location', async ctx => {
+    try {
+        const url = 'http://api.openweathermap.org/data/2.5/weather'
+        const { latitude: lat, longitude: lon} = ctx.message.location
+        console.log(lat, lon)
+    }catch(e){
+        
+    }
+})
 
 bot.startPolling()
