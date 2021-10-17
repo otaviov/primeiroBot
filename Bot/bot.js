@@ -31,4 +31,21 @@ bot.start(async ctx => {
 
 })
 
+bot.hears('O que são bots?', ctx =>{
+    ctx.replyWithMarkdown('Os bots são aplicações autônomas que rodam na Internet enquanto desempenham algum tipo de tarefa pré-determinada. Eles podem ser úteis e inofensivos para os usuários em geral, mas também podem ser usados de forma abusiva por criminosos. Segundo pesquisa da Imperva, em 2016 os bots corresponderam a mais de 50% do tráfego total da Internet. \n_Algo mais?_', tecladoOpcoes)
+})
+
+bot.hears('O que verei no curso?', async ctx =>{
+    await ctx.replyWithMarkdown('No *curso* ... Não sei, isso é apenas um *teste*')
+    await ctx.reply('1. Criamos um bot')
+    await ctx.reply('2. nada mais')
+    await ctx.replyWithMarkdown('\n _Algo mais?', tecladoOpcoes)
+
+})
+
+bot.hears('Posso mesmo automatizar tarefas?', async ctx =>{
+    await ctx.replyWithMarkdown('Claro que sim, o bot servirá...\n Quer uma palhinha?', botoes)
+    
+})
+
 bot.startPolling()
