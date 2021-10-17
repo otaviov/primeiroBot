@@ -48,4 +48,28 @@ bot.hears('Posso mesmo automatizar tarefas?', async ctx =>{
     
 })
 
+bot.hears('Como comprar o curso?', ctx => {
+    ctx.replyWithMarkdown('Isso é apenas um teste, não tem curso :)', tecladoOpcoes)
+})
+
+bot.action('n', ctx => {
+    ctx.reply('Ok, sem problemas :)', tecladoOpcoes)
+
+})
+
+bot.action('s', async ctx => {
+   await ctx.reply(`Legal, você poderia me enviar sua localização?`, localizacao)
+})
+
+bot.hears(/mensagem qualquer/i, async ctx =>{
+    await ctx.reply('Otima piada :)', tecladoOpcoes)
+})
+
+bot.on('text', async ctx => {
+    let msg = ctx.message.text
+    msg = msg.split('').reverse().join('')
+    await ctx.reply(`A sua mensagem, ao contrário é: ${msg}`)
+    await ctx.reply('Isso é pra mostrar que eu consigo ler o que você escreve e processar sua mensagem', tecladoOpcoes)
+})
+
 bot.startPolling()
