@@ -76,9 +76,12 @@ bot.on('location', async ctx => {
     try {
         const url = 'http://api.openweathermap.org/data/2.5/weather'
         const { latitude: lat, longitude: lon} = ctx.message.location
-        console.log(lat, lon)
+        //console.log(lat, lon)
+        const res = await axios.get(`${url}?lat=${lat}&lon=${lon}&APPID=bec9c4249dd912cb83286f6efd432c95&units=metric`)
+        await ctx.reply(`Você está em ${res.data.name}`)
+        await ctx.reply(`A temperatura por ai está em ${res.data.main.temp}ºC`, tecladoOpcoes)
     }catch(e){
-        
+        ctx.reply(`Estou tendo roblemas para pegar a tua localização, você está no plata terra?`, tecladoOpcoes)
     }
 })
 
