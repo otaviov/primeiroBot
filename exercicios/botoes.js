@@ -26,6 +26,7 @@ bot.start(async ctx => {
     await ctx.reply(`A contagem atual está em ${contagem}`, botoes)
 })
 
+
 bot.action(/add (\d+)/, ctx => {
     contagem += parseInt(ctx.match[1])
     ctx.reply(`A contagem atual está em ${contagem}`, botoes)
