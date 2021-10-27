@@ -18,3 +18,4 @@ Escolha o comando `/newbot`
 Escolha o nome do seu chatbot e faça as configurações gerais
 Se quiser conectar com um software de atendimento ao cliente, como o da Zendesk, copie o token disponibilizado e insira na ferramenta de suporte ao cliente.
 
+`npm init`
