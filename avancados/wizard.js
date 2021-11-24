@@ -15,7 +15,7 @@ let data = null
 
 const confirmacao = Extra.markup(Markup.inlineKeyboard ([
     Markup.callbackButton('Sim', 's'),
-    Markup.callbackButton('Não', 'n')
+    Markup.callbackButton('Não', 'n'),
 ]))
 
 const precoHandler = new Composer()
@@ -39,7 +39,7 @@ dataHandler.hears (/(\/d{2}\/\d{2}\/d{4})/, cx => {
     ctx.wizard.next()
 })
 
-dataHandler.use(ctx => ctx.reply('Entre com uma data no formato dd/MM/YYYY'))
+dataHandler.use(ctx => ctx.reply('Entre com uma data no formato DD/MM/YYYY'))
 
 const confirmacaoHandler = new Composer()
 confirmacaoHandler.action('s', ctx => {
@@ -68,6 +68,8 @@ const bot = new Telegraf (env.token)
 const stage = new Stage([wizardCompra], { default: 'compra' })
 bot.use(session())
 bot.use(stage.middleware())
+
+
 bot.startPolling()
 
 
