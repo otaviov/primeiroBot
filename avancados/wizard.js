@@ -3,7 +3,6 @@ const Telegraf = require('telegraf')
 const Composer = require('telegraf/composer')
 const session = require('telegraf/session')
 const Stage = require('telegraf/stage')
-const Scene = require('telegraf/scenes/base')
 const Extra = require('telegraf/extra')
 const Markup = require('telegraf/markup')
 const WizardScene = require('telegraf/scenes/wizard')
@@ -29,7 +28,7 @@ precoHandler.hears(/(\d+)/, ctx => {
 precoHandler.use(ctx => ctx.reply('Apenas números'))
 
 const dataHandler = new Composer()
-dataHandler.hears (/(\d{2}\/\d{2}\/\d{4})/, cx => {
+dataHandler.hears (/(\d{2}\/\d{2}\/\d{4})/, ctx => {
     data = ctx.match[1]
     ctx.reply(`Aqui está o resumo da sua compra: 
     Descrição: ${descricao}
@@ -43,7 +42,7 @@ dataHandler.use(ctx => ctx.reply('Entre com uma data no formato dd/MM/YYYY'))
 
 const confirmacaoHandler = new Composer()
 confirmacaoHandler.action('s', ctx => {
-    ctx.reply('Compra excluída!')
+    ctx.reply('Compra confirmada')
     ctx.scene.leave()
 })
 
