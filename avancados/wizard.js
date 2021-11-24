@@ -29,8 +29,8 @@ precoHandler.hears(/(\d+)/, ctx => {
 precoHandler.use(ctx => ctx.reply('Apenas números'))
 
 const dataHandler = new Composer()
-dataHandler.hears (/(\/d{2}\/\d{2}\/d{4})/, cx => {
-    data =ctx.match[1]
+dataHandler.hears (/(\d{2}\/\d{2}\/\d{4})/, cx => {
+    data = ctx.match[1]
     ctx.reply(`Aqui está o resumo da sua compra: 
     Descrição: ${descricao}
     Preço: ${preco}
@@ -39,10 +39,15 @@ dataHandler.hears (/(\/d{2}\/\d{2}\/d{4})/, cx => {
     ctx.wizard.next()
 })
 
-dataHandler.use(ctx => ctx.reply('Entre com uma data no formato DD/MM/YYYY'))
+dataHandler.use(ctx => ctx.reply('Entre com uma data no formato dd/MM/YYYY'))
 
 const confirmacaoHandler = new Composer()
 confirmacaoHandler.action('s', ctx => {
+    ctx.reply('Compra excluída!')
+    ctx.scene.leave()
+})
+
+confirmacaoHandler.action('n', ctx => {
     ctx.reply('Compra excluída!')
     ctx.scene.leave()
 })
